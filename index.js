@@ -100,3 +100,34 @@ ${(week3Plants/maxCapforPlants)*100}% of the full capacity.`);
 // if the scientists were to start with 100 plants, and did not prune them for 10 weeks.
 // If the space remained circular, what would be the radius of this expanded garden?
 
+//LOL 
+let newWeek1Plants = week1Plants *5;
+let newWeek2Plants = newWeek1Plants * 2;
+let newWeek3Plants = newWeek2Plants * 2;
+let newWeek4Plants = newWeek3Plants * 2;
+let newWeek5Plants = newWeek4Plants * 2;
+let newWeek6Plants = newWeek5Plants * 2;
+let newWeek7Plants = newWeek6Plants * 2;
+let newWeek8Plants = newWeek7Plants * 2;
+let newWeek9Plants = newWeek8Plants * 2;
+let newWeek10Plants = newWeek9Plants * 2;
+
+console.log(`Week 1: ${newWeek1Plants} plants`);
+console.log(`Week 2: ${newWeek2Plants} plants`);
+console.log(`Week 3: ${newWeek3Plants} plants`);
+console.log(`Week 4: ${newWeek4Plants} plants`);
+console.log(`Week 5: ${newWeek5Plants} plants`);
+console.log(`Week 6: ${newWeek6Plants} plants`);
+console.log(`Week 7: ${newWeek7Plants} plants`);
+console.log(`Week 8: ${newWeek8Plants} plants`);
+console.log(`Week 9: ${newWeek9Plants} plants`);
+console.log(`Week 10: ${newWeek10Plants} plants`);
+
+
+let newRequiredSpace = newWeek10Plants * 0.8;
+
+console.log(`This is the new required space for the new plants: ${newRequiredSpace}`);
+
+let newRadius = newRequiredSpace/PI;
+
+console.log(`The new radius of the expanded garden would be: ${newRadius} meters`);
