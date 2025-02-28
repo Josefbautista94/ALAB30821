@@ -39,11 +39,11 @@ const area = PI * radius * radius;
 
 // Figuring out the max cap for plants
 let spaceForPlants = 0.8;
-let maxCapforPlants = area/spaceForPlants;
+let maxCapforPlants = Math.round(area/spaceForPlants);
 
 console.log(`The garden can fit a total of ${maxCapforPlants} plants.`); 
-
-let week1Plants = 20;
+let week0Plants = 20;
+let week1Plants = week0Plants * 2;
 let week2Plants = week1Plants * 2;
 let week3Plants = week2Plants * 2;
 
@@ -53,44 +53,44 @@ Week 3: ${week3Plants} plants`);
 
 if(week1Plants < maxCapforPlants  * .50){
     console.log(`The garden is not at full capacity yet, we can still grow since it hasn't
-even hit the half capacity which is : ${maxCapforPlants * .50}%, we are currently at
-${week1Plants} plants which is : ${(week1Plants/maxCapforPlants) * 100}% of the full capacity.`);
+even hit the half capacity which is : ${Math.round(maxCapforPlants * .50)}%, we are currently at
+${week1Plants} plants which is : ${Math.round((week1Plants/maxCapforPlants) * 100)}% of the full capacity.`);
 }
-else if(week1Plants >= maxCapforPlants * .50 && week1Plants <= maxCapforPlants * .80){
+else if(week2Plants >= maxCapforPlants * .50 && week2Plants <= maxCapforPlants * .80){
     console.log(`The garden is at half capacity, or more but not yet above 80% capacity, we are currently at 
-${(week1Plants/maxCapforPlants)*100} we can still plant more lets monitor till next week`);
+${Math.round((week1Plants/maxCapforPlants)*100)} we can still plant more lets monitor till next week`);
 }
 else if(week1Plants > maxCapforPlants * .80){
-    console.log(`The garden is almost reaching full capacity, lets not plant more, we are currently at
-${(week1Plants/maxCapforPlants)*100}% of the full capacity.`);
+    console.log(`The garden is almost reaching full capacity or probably is alreadt over, lets not plant more, we are currently at
+${Math.round((week1Plants/maxCapforPlants)*100)}% of the full capacity.`);
 }
 
 if(week2Plants < maxCapforPlants  * .50){
     console.log(`The garden is not at full capacity yet, we can still grow since it hasn't
-even hit the half capacity which is : ${maxCapforPlants * .50}%, we are currently at
+even hit the half capacity which is : ${Math.round(maxCapforPlants * .50)}%, we are currently at
 ${week2Plants} plants which is : ${(week2Plants/maxCapforPlants) * 100}% of the full capacity.`);
 }
 else if(week2Plants >= maxCapforPlants * .50 && week2Plants <= maxCapforPlants * .80){
     console.log(`The garden is at half capacity, or more but not yet above 80% capacity, we are currently at 
-${(week2Plants/maxCapforPlants)*100} we can still plant more lets monitor till next week`);
+${Math.round((week2Plants/maxCapforPlants)*100)} we can still plant more lets monitor till next week`);
 }
 else if(week2Plants > maxCapforPlants * .80){
-    console.log(`The garden is almost reaching full capacity, lets not plant more, we are currently at
-${(week2Plants/maxCapforPlants)*100}% of the full capacity.`);
+    console.log(`The garden is almost reaching full capacity or probably is alreadt over lets not plant more, we are currently at
+${Math.round((week2Plants/maxCapforPlants)*100)}% of the full capacity.`);
 }
 
 if(week3Plants < maxCapforPlants  * .50){
     console.log(`The garden is not at full capacity yet, we can still grow since it hasn't
-even hit the half capacity which is : ${maxCapforPlants * .50}%, we are currently at
-${week3Plants} plants which is : ${(week3Plants/maxCapforPlants) * 100}% of the full capacity.`);
+even hit the half capacity which is : ${Math.round(maxCapforPlants * .50)}%, we are currently at
+${week3Plants} plants which is : ${Math.round((week3Plants/maxCapforPlants) * 100)}% of the full capacity.`);
 }
 else if(week3Plants >= maxCapforPlants * .50 && week3Plants < maxCapforPlants * .80){
     console.log(`The garden is at half capacity, or more but not yet above 80% capacity, we are currently at 
-${(week3Plants/maxCapforPlants)*100} we can still plant more lets monitor till next week`);
+${Math.round((week3Plants/maxCapforPlants)*100)} we can still plant more lets monitor till next week`);
 }
 else if(week3Plants >= maxCapforPlants * .80){
-    console.log(`The garden is almost reaching full capacity, lets not plant more, we are currently at
-${(week3Plants/maxCapforPlants)*100}% of the full capacity.`);
+    console.log(`The garden is almost reaching full capacity or probably is alreadt over lets not plant more, we are currently at
+${Math.round((week3Plants/maxCapforPlants)*100)}% of the full capacity.`);
 }
 
 // Part 2: Thinking Bigger
@@ -100,8 +100,8 @@ ${(week3Plants/maxCapforPlants)*100}% of the full capacity.`);
 // if the scientists were to start with 100 plants, and did not prune them for 10 weeks.
 // If the space remained circular, what would be the radius of this expanded garden?
 
-//LOL 
-let newWeek1Plants = week1Plants *5;
+let newWeek0Plants = week0Plants *5;
+let newWeek1Plants = newWeek0Plants * 2;
 let newWeek2Plants = newWeek1Plants * 2;
 let newWeek3Plants = newWeek2Plants * 2;
 let newWeek4Plants = newWeek3Plants * 2;
@@ -111,7 +111,7 @@ let newWeek7Plants = newWeek6Plants * 2;
 let newWeek8Plants = newWeek7Plants * 2;
 let newWeek9Plants = newWeek8Plants * 2;
 let newWeek10Plants = newWeek9Plants * 2;
-
+//LOL wish i coulda looped this
 console.log(`Week 1: ${newWeek1Plants} plants`);
 console.log(`Week 2: ${newWeek2Plants} plants`);
 console.log(`Week 3: ${newWeek3Plants} plants`);
@@ -124,10 +124,25 @@ console.log(`Week 9: ${newWeek9Plants} plants`);
 console.log(`Week 10: ${newWeek10Plants} plants`);
 
 
-let newRequiredSpace = newWeek10Plants * 0.8;
-
+let newRequiredSpace = Math.round(newWeek10Plants * 0.8);
 console.log(`This is the new required space for the new plants: ${newRequiredSpace}`);
 
-let newRadius = newRequiredSpace/PI;
+let newRadius = Math.round(Math.sqrt(newRequiredSpace / PI));
 
 console.log(`The new radius of the expanded garden would be: ${newRadius} meters`);
+
+// Part 3: Error Handling
+// The scientists decided not to listen to your recommendations, and have instead started with 100
+// plants in the original 5-meter-radius garden.
+// Use try and catch to wrap your work in an error-handling block. If the amount of space required to
+// hold the originally provided number of plants exceeds the amount of space available, throw a new
+// error and log an appropriate message.
+
+try {
+    if (newRequiredSpace > area) {
+        throw new Error("Error: Not enough space for the plants!");
+    }
+    console.log(`The new required space for the new plants: ${newRequiredSpace}`);
+} catch (error) {
+    console.log(error.message);
+}
